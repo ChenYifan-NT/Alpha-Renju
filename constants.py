@@ -11,4 +11,6 @@ RENJU = 4  # the number of stones in a line needed to win
 N_SEARCH = 1000
 
 C_PUCT = 5
+
+TEMPERATURE = 0.001
 # <<< MCTS constants

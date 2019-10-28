@@ -32,7 +32,7 @@ class Tree:
         self.root = Node(None, 1.0)
 
     @staticmethod
-    def _is_leaf(node):
+    def is_leaf(node):
         """
         check if a node is a leaf node
         :param node:
@@ -86,7 +86,7 @@ class Tree:
         node.Q = node.W / node.N
 
     @staticmethod
-    def _back_propagation(node, value):
+    def back_propagation(node, value):
         """
         update the node of the searching route using the value of the leaf node
         :param node:
@@ -94,7 +94,7 @@ class Tree:
         :return:
         """
         if node.parent:
-            Tree._back_propagation(node.parent, -value)
+            Tree.back_propagation(node.parent, -value * node.p)
         Tree._update_node(node, value)
 
 
