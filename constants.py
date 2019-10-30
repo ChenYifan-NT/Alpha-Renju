@@ -14,3 +14,7 @@ C_PUCT = 5
 
 TEMPERATURE = 0.001
 # <<< MCTS constants
+
+# >>> nn constants
+L2_BETA = 1e-4
+# <<< nn constants

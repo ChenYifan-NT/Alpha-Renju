@@ -59,7 +59,7 @@ class Tree:
         :param node:
         :return: uct value of the node
         """
-        uct = C_PUCT * node.P * math.sqrt(node.parent.N / (1 + node.N))
+        uct = C_PUCT * node.p * math.sqrt(node.parent.N / (1 + node.N))
         uct += node.Q
 
         return uct
@@ -97,7 +97,22 @@ class Tree:
             Tree.back_propagation(node.parent, -value * node.p)
         Tree._update_node(node, value)
 
+    @staticmethod
+    def print_node(node, depth=0):
+        """
+        print the information of the node and its successors
+        :param depth:
+        :param node:
+        :return:
+        """
+        print(node.N, depth)
+        if node.children:
+            _, children = zip(*node.children.items())
+            for child in children:
+                Tree.print_node(child, depth=depth + 1)
+
 
 # testing
 if __name__ == "__main__":
-    pass
+    root = Node()
+    print(Tree.is_leaf(root))

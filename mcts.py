@@ -1,5 +1,3 @@
-import numpy as np
-import copy
 from constants import *
 from tree import *
 from board import *
@@ -90,6 +88,22 @@ class MCTS(Tree):
         p /= np.sum(p)
         return p
 
+    def update(self, action):
+        """
+        transfer the root to one of its child nodes according to the last action
+        :param action:
+        :return:
+        """
+        self.root = self.root.children[action]
+        self.root.parent = None
+
+    def reset(self):
+        """
+        reset the root node
+        :return:
+        """
+        self.root = Node(parent=None, p=1.0)
+
 
 # testing
 if __name__ == "__main__":
@@ -98,5 +112,4 @@ if __name__ == "__main__":
 
     actions, probs = mcts.solve(board)
 
-    print(actions[:5])
-    print(probs[:5])
+    MCTS.print_node(mcts.root)

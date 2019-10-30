@@ -15,11 +15,11 @@ def uniform_policy(board):
 
     probabilities = np.ones(actions.size) / actions.size
 
-    a_c = list(zip(actions, probabilities))
+    a_p = list(zip(actions, probabilities))
 
-    value = np.random.uniform(-1, 1)
+    v = np.random.uniform(-1, 1)
 
-    return a_c, value
+    return a_p, v
 
 
 # testing
@@ -29,7 +29,7 @@ if __name__ == "__main__":
     for i in range(144):
         board.place_stone(i)
         if i % 10 == 0:
-            a_c, value = uniform_policy(board)
+            a_p, value = uniform_policy(board)
             print(i)
-            print(a_c)
+            print(a_p)
             print(value)

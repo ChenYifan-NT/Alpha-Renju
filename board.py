@@ -84,6 +84,9 @@ class Board:
         :return: has_winner, winner
         """
 
+        if self.last_action == -1:
+            return False, 0
+
         # starting from the position where the last stone is placed
         pos = self.last_action
         player = self.stones[pos]
